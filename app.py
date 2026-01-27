@@ -132,7 +132,6 @@ def process_vision_data(image_file):
     # Prompt for vision model
     prompt = """
     Extract the following information from this hardware label in JSON format:
-    - form_factor (Laptop or Desktop)
     - capacity (e.g., 8GB, 16GB, 256GB)
     - generation (DDR3, DDR4, DDR5)
     - brand
@@ -207,24 +206,24 @@ with col2:
                 # Display results in a nice grid
                 st.markdown("---")
                 
-                # Row 1: Form Factor & Brand
+                # Row 1: Brand & Generation
                 r1c1, r1c2 = st.columns(2)
                 with r1c1:
-                    st.markdown(f"""
-                    <div class="metric-box">
-                        <div class="metric-label">Form Factor</div>
-                        <div class="metric-value">{extracted_data.get('form_factor', 'N/A')}</div>
-                    </div>
-                    """, unsafe_allow_html=True)
-                with r1c2:
                     st.markdown(f"""
                     <div class="metric-box">
                         <div class="metric-label">Brand</div>
                         <div class="metric-value">{extracted_data.get('brand', 'N/A')}</div>
                     </div>
                     """, unsafe_allow_html=True)
+                with r1c2:
+                    st.markdown(f"""
+                    <div class="metric-box">
+                        <div class="metric-label">Generation</div>
+                        <div class="metric-value">{extracted_data.get('generation', 'N/A')}</div>
+                    </div>
+                    """, unsafe_allow_html=True)
                 
-                # Row 2: Capacity & Generation
+                # Row 2: Capacity & Speed
                 r2c1, r2c2 = st.columns(2)
                 with r2c1:
                     st.markdown(f"""
@@ -236,18 +235,10 @@ with col2:
                 with r2c2:
                     st.markdown(f"""
                     <div class="metric-box">
-                        <div class="metric-label">Generation</div>
-                        <div class="metric-value">{extracted_data.get('generation', 'N/A')}</div>
+                        <div class="metric-label">Bus Speed</div>
+                        <div class="metric-value">{extracted_data.get('speed', 'N/A')} MHz</div>
                     </div>
                     """, unsafe_allow_html=True)
-                
-                # Row 3: Speed
-                st.markdown(f"""
-                <div class="metric-box">
-                    <div class="metric-label">Bus Speed</div>
-                    <div class="metric-value">{extracted_data.get('speed', 'N/A')} MHz</div>
-                </div>
-                """, unsafe_allow_html=True)
                 
                 # JSON output (collapsible)
                 with st.expander("📋 View Raw JSON"):
