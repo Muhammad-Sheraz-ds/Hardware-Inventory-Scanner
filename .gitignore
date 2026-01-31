@@ -1,4 +1,31 @@
-.streamlit/
+# Dependencies
+node_modules/
 __pycache__/
 *.pyc
+.venv/
+venv/
+
+# Environment files with secrets
 .env
+backend/.env
+frontend/.env.local
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# IDE
+.vscode/
+.idea/
+
+# Build outputs
+.next/
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
