@@ -1,8 +1,14 @@
+---
+title: Hardware Scanner API
+emoji: 🖥️
+colorFrom: purple
+colorTo: pink
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # Hardware Inventory Scanner - Backend API
-
-FastAPI backend for the Hardware Inventory Scanner.
-
-## Local Development
 
 ```bash
 pip install -r requirements.txt
